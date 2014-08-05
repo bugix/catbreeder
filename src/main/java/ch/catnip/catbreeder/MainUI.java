@@ -59,7 +59,7 @@ public class MainUI extends UI {
 
 		setContent(horizontalLayout);
 
-		//new DiscoveryNavigator(this, this);
+		new DiscoveryNavigator(this, this);
 	}
 
 	public void addEventListener(View view) {

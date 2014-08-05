@@ -1,5 +1,7 @@
 package ch.catnip.catbreeder.view;
 
+import java.util.Date;
+
 import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
@@ -9,9 +11,12 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import ru.xpoft.vaadin.VaadinView;
+import ch.catnip.catbreeder.model.Breed;
+import ch.catnip.catbreeder.model.Cat;
 import ch.catnip.catbreeder.presenter.CatListPresenter;
 
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
+import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
 
 @SuppressWarnings("serial")
@@ -26,6 +31,8 @@ public class CatListViewImpl extends VerticalLayout implements CatView {
 
 	@Autowired
 	private CatListPresenter catListPresenter;
+	
+	private Table table;
 
 	@PostConstruct
 	@Override
@@ -35,6 +42,10 @@ public class CatListViewImpl extends VerticalLayout implements CatView {
 
 	@Override
 	public void initComponent() {
+		table = new Table("My sweet Pussycats");
+		table.addContainerProperty("name", String.class, null);
+		//table.addContainerProperty("breed", Breed.class, null);
+		//table.addContainerProperty("birthDay", Date.class, null);
 	}
 
 	@Override
@@ -43,6 +54,7 @@ public class CatListViewImpl extends VerticalLayout implements CatView {
 
 	@Override
 	public void setLayout() {
+		addComponent(table);
 	}
 
 	@Override
@@ -57,5 +69,13 @@ public class CatListViewImpl extends VerticalLayout implements CatView {
 
 	@Override
 	public void enter(ViewChangeEvent event) {
+		
+		Integer count = 1;
+		
+		for (Cat cat : catListPresenter.getCatList())
+		{
+			logger.debug("Add " + cat.getName() + " to table");
+			table.addItem(new Object[] {cat.getName()}, count++);
+		}
 	}
 }
