@@ -13,6 +13,17 @@ public class Cat {
 	private LocalDate birthDay;
 	
 	private byte[] picture;
+	
+	public Cat() {
+	}
+
+	public Cat(String name, Breeder breeder, Breed breed, LocalDate birthDay, byte[] picture) {
+		this.name = name;
+		this.breeder = breeder;
+		this.breed = breed;
+		this.birthDay = birthDay;
+		this.picture = picture;
+	}
 
 	public String getName() {
 		return name;
