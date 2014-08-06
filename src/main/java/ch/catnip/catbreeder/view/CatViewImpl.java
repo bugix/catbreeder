@@ -77,6 +77,8 @@ public class CatViewImpl extends VerticalLayout implements CatView {
 	public void setLayout() {
 		addComponent(nameField);
 		addComponent(breedSelect);
+		setMargin(true);
+		setSpacing(true);
 	}
 
 	@Override

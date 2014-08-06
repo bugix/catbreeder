@@ -11,6 +11,13 @@ Goals
 
 Sugar on top
 - Logout button on the upper right (layout template)
-- H2 persistence
+- DB persistence
 
 ![](https://raw.githubusercontent.com/bugix/catbreeder/master/doc/img/catbreeder.png)
+
+TODO & Questions 
+- Were to put base layout?
+- Navigation (EventBus?)
+- How to present a Container full of Beans in a Table?
+- MVP call flow?
+- Simple login mechanism (Check if session contains Breeder, reroute to login) 
