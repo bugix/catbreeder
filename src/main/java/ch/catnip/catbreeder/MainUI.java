@@ -31,6 +31,7 @@ public class MainUI extends UI {
 		setLayout();
 	}
 	
+	// TODO Move this its own Class
 	private void setLayout() {
 		setSizeFull();
 		
@@ -64,6 +65,7 @@ public class MainUI extends UI {
 		new DiscoveryNavigator(this, panel);
 	}
 
+	// TODO Add EventBus
 	public void addEventListener(View view) {
 		// eventBus.register(view);
 	}

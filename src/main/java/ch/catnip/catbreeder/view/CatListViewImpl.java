@@ -40,6 +40,7 @@ public class CatListViewImpl extends VerticalLayout implements CatView {
 		construct();
 	}
 
+	// TODO How to handle properties unknown to Vaadin? (eg. LocalDate, Enums like Breed)
 	@Override
 	public void initComponent() {
 		table = new Table("My sweet Pussycats");
@@ -69,6 +70,7 @@ public class CatListViewImpl extends VerticalLayout implements CatView {
 		super.detach();
 	}
 
+	// TODO This is ugly I think
 	@Override
 	public void enter(ViewChangeEvent event) {
 		

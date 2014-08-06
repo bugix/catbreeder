@@ -29,6 +29,7 @@ public class CatListPresenter implements Presenter<CatListView> {
 		this.view = view;
 	}
 	
+	// TODO Is this ok?
 	public List<Cat> getCatList() {
 		return breederService.myCats();
 	}
