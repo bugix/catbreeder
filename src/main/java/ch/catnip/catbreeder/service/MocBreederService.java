@@ -30,7 +30,7 @@ public class MocBreederService implements BreederService {
 		currentBreeder.setLogin("john");
 		currentBreeder.setPassword("123456");
 		
-		
+		//context.getResourceAsStream("grumpy.jpg")
 		
 		catList = new LinkedList<Cat>();
 		catList.add(new Cat("Anonymous", currentBreeder, Breed.LONGHAIR, LocalDate.now(), null));
