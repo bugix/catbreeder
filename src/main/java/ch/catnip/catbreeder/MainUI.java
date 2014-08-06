@@ -31,48 +31,48 @@ public class MainUI extends UI {
 	protected void init(VaadinRequest request) {
 		setLayout();
 	}
-	
+
 	// TODO Move this its own Class
 	private void setLayout() {
 		setSizeFull();
 
 		// Layout with menu on left and view area on right
-        HorizontalLayout horizontalLayout = new HorizontalLayout();
-        horizontalLayout.setSizeFull();
+		HorizontalLayout horizontalLayout = new HorizontalLayout();
+		horizontalLayout.setSizeFull();
 
-        // Have a menu on the left side of the screen
-        Panel menu = new Panel("Menu");
-        menu.setHeight("100%");
-        menu.setWidth(null);
-        
-        VerticalLayout menuContent = new VerticalLayout();
-        
-        Button listCatsButton = new Button("List cats");
-    	Button addCatButton = new Button("Add cat");
-        
-        menuContent.addComponent(listCatsButton);
-        menuContent.addComponent(addCatButton);
-        
-        menuContent.setWidth(null);
-        menuContent.setMargin(true);
-        menuContent.setSpacing(true);
-        menu.setContent(menuContent);
-        horizontalLayout.addComponent(menu);
-        
-        // A panel that contains a content area on right
-        Panel content = new Panel("Content");
-        content.setSizeFull();
-        horizontalLayout.addComponent(content);
-        horizontalLayout.setExpandRatio(content, 1.0f);
+		// Have a menu on the left side of the screen
+		Panel menu = new Panel("Menu");
+		menu.setHeight("100%");
+		menu.setWidth(null);
+
+		VerticalLayout menuContent = new VerticalLayout();
+
+		Button listCatsButton = new Button("List cats");
+		Button addCatButton = new Button("Add cat");
+
+		menuContent.addComponent(listCatsButton);
+		menuContent.addComponent(addCatButton);
+
+		menuContent.setWidth(null);
+		menuContent.setMargin(true);
+		menuContent.setSpacing(true);
+		menu.setContent(menuContent);
+		horizontalLayout.addComponent(menu);
+
+		// A panel that contains a content area on right
+		Panel content = new Panel("Content");
+		content.setSizeFull();
+		horizontalLayout.addComponent(content);
+		horizontalLayout.setExpandRatio(content, 1.0f);
 
 		setContent(horizontalLayout);
 
 		navigator = new DiscoveryNavigator(this, content);
-		
+
 		listCatsButton.addClickListener(e -> {
 			navigator.navigateTo("");
 		});
-		
+
 		addCatButton.addClickListener(e -> {
 			navigator.navigateTo("cat");
 		});
