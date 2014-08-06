@@ -1,6 +1,7 @@
 package ch.catnip.catbreeder.view;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -23,7 +24,7 @@ import com.vaadin.ui.VerticalLayout;
 @Component
 @Scope("prototype")
 @VaadinView(CatListViewImpl.PLACE)
-public class CatListViewImpl extends VerticalLayout implements CatView {
+public class CatListViewImpl extends VerticalLayout implements CatListView {
 	
 	public static final String PLACE = "";
 
@@ -70,16 +71,19 @@ public class CatListViewImpl extends VerticalLayout implements CatView {
 		super.detach();
 	}
 
-	// TODO This is ugly I think
 	@Override
 	public void enter(ViewChangeEvent event) {
-		
+	}
+
+	@Override
+	public void setCatList(List<Cat> catList) {
+
 		Integer count = 1;
 		
-		for (Cat cat : catListPresenter.getCatList())
+		for (Cat cat : catList)
 		{
 			logger.debug("Add " + cat.getName() + " to table");
 			table.addItem(new Object[] {cat.getName()}, count++);
-		}
+		}	
 	}
 }

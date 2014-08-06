@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ch.catnip.catbreeder.model.Breed;
@@ -12,6 +15,9 @@ import ch.catnip.catbreeder.model.Cat;
 
 @Service
 public class MocBreederService implements BreederService {
+	
+	@Autowired
+	ServletContext context;
 	
 	private static Breeder currentBreeder;
 	
@@ -23,6 +29,8 @@ public class MocBreederService implements BreederService {
 		currentBreeder.setLastName("Doe");
 		currentBreeder.setLogin("john");
 		currentBreeder.setPassword("123456");
+		
+		
 		
 		catList = new LinkedList<Cat>();
 		catList.add(new Cat("Anonymous", currentBreeder, Breed.LONGHAIR, LocalDate.now(), null));

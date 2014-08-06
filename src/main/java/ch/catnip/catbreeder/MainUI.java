@@ -32,7 +32,7 @@ public class MainUI extends UI {
 		setLayout();
 	}
 
-	// TODO Move this its own Class
+	// TODO Move this to its own Class
 	private void setLayout() {
 		setSizeFull();
 
