@@ -6,6 +6,11 @@ import ch.catnip.catbreeder.model.Cat;
 
 public interface CatListView extends LeView {
 	
-	void setCatList(List<Cat> catList);
-	
+	void renderCatList(List<Cat> catList);
+
+	interface CatListViewListener {
+		void enter(String parameters);
+		
+		void setView(CatListView view);
+	}
 }

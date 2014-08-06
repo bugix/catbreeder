@@ -10,15 +10,10 @@ import ch.catnip.catbreeder.view.CatView;
 @SuppressWarnings("serial")
 @Component
 @Scope("prototype")
-public class CatPresenter implements Presenter<CatView> {
+public class CatPresenter implements Presenter {
 	
 	private static final transient Logger logger = LoggerFactory.getLogger(LoginPresenter.class);
 
 	private CatView view;
-
-	@Override
-	public void setView(CatView view) {
-		this.view = view;
-	}
 
 }
