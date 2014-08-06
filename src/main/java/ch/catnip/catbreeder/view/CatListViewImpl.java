@@ -25,7 +25,7 @@ import com.vaadin.ui.VerticalLayout;
 @VaadinView(CatListViewImpl.PLACE)
 public class CatListViewImpl extends VerticalLayout implements CatView {
 	
-	public static final String PLACE = "catlist";
+	public static final String PLACE = "";
 
 	private static final transient Logger logger = LoggerFactory.getLogger(CatListViewImpl.class);
 
@@ -55,6 +55,8 @@ public class CatListViewImpl extends VerticalLayout implements CatView {
 	@Override
 	public void setLayout() {
 		addComponent(table);
+		setMargin(true);
+		setSpacing(true);
 	}
 
 	@Override

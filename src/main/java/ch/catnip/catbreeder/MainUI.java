@@ -44,10 +44,12 @@ public class MainUI extends UI {
         menu.setWidth(null);
         
         VerticalLayout menuContent = new VerticalLayout();
-        menuContent.addComponent(new Button("Menu Button"));
+        menuContent.addComponent(new Button("List cats"));
+        menuContent.addComponent(new Button("Add cat"));
         
         menuContent.setWidth(null);
         menuContent.setMargin(true);
+        menuContent.setSpacing(true);
         menu.setContent(menuContent);
         horizontalLayout.addComponent(menu);
         
@@ -59,7 +61,7 @@ public class MainUI extends UI {
 
 		setContent(horizontalLayout);
 
-		new DiscoveryNavigator(this, this);
+		new DiscoveryNavigator(this, panel);
 	}
 
 	public void addEventListener(View view) {
