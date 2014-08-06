@@ -8,6 +8,7 @@ import ru.xpoft.vaadin.DiscoveryNavigator;
 import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.Button;
@@ -23,8 +24,8 @@ import com.vaadin.ui.VerticalLayout;
 @PreserveOnRefresh
 @Title("CatBreeder")
 public class MainUI extends UI {
-	
-	Panel panel;
+
+	Navigator navigator;
 
 	@Override
 	protected void init(VaadinRequest request) {
@@ -34,7 +35,7 @@ public class MainUI extends UI {
 	// TODO Move this its own Class
 	private void setLayout() {
 		setSizeFull();
-		
+
 		// Layout with menu on left and view area on right
         HorizontalLayout horizontalLayout = new HorizontalLayout();
         horizontalLayout.setSizeFull();
@@ -45,8 +46,12 @@ public class MainUI extends UI {
         menu.setWidth(null);
         
         VerticalLayout menuContent = new VerticalLayout();
-        menuContent.addComponent(new Button("List cats"));
-        menuContent.addComponent(new Button("Add cat"));
+        
+        Button listCatsButton = new Button("List cats");
+    	Button addCatButton = new Button("Add cat");
+        
+        menuContent.addComponent(listCatsButton);
+        menuContent.addComponent(addCatButton);
         
         menuContent.setWidth(null);
         menuContent.setMargin(true);
@@ -55,14 +60,22 @@ public class MainUI extends UI {
         horizontalLayout.addComponent(menu);
         
         // A panel that contains a content area on right
-        panel = new Panel("Content");
-        panel.setSizeFull();
-        horizontalLayout.addComponent(panel);
-        horizontalLayout.setExpandRatio(panel, 1.0f);
+        Panel content = new Panel("Content");
+        content.setSizeFull();
+        horizontalLayout.addComponent(content);
+        horizontalLayout.setExpandRatio(content, 1.0f);
 
 		setContent(horizontalLayout);
 
-		new DiscoveryNavigator(this, panel);
+		navigator = new DiscoveryNavigator(this, content);
+		
+		listCatsButton.addClickListener(e -> {
+			navigator.navigateTo("");
+		});
+		
+		addCatButton.addClickListener(e -> {
+			navigator.navigateTo("cat");
+		});
 	}
 
 	// TODO Add EventBus
