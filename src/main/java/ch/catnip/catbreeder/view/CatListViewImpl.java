@@ -15,15 +15,16 @@ import org.springframework.stereotype.Component;
 import ru.xpoft.vaadin.VaadinView;
 import ch.catnip.catbreeder.model.Cat;
 
+import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
 
 @SuppressWarnings("serial")
 @Component
-@Scope("prototype")
+@Scope(value = "request")
 @VaadinView(CatListViewImpl.PLACE)
-public class CatListViewImpl extends VerticalLayout implements CatListView {
+public class CatListViewImpl extends VerticalLayout implements CatListView, View {
 	
 	public static final String PLACE = "";
 
@@ -42,8 +43,6 @@ public class CatListViewImpl extends VerticalLayout implements CatListView {
 	@Override
 	public void postConstruct() {
 		construct();
-		
-		catListViewListener.setView(this);
 	}
 
 	// TODO How to handle properties unknown to Vaadin? (eg. LocalDate, Enums like Breed)

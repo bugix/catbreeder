@@ -1,8 +1,6 @@
 package ch.catnip.catbreeder.service;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,14 +9,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
-
-import com.google.common.io.ByteStreams;
 
 import ch.catnip.catbreeder.model.Breed;
 import ch.catnip.catbreeder.model.Breeder;
 import ch.catnip.catbreeder.model.Cat;
+
+import com.google.common.io.ByteStreams;
 
 @Service
 public class MocBreederService implements BreederService {

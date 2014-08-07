@@ -1,4 +1,4 @@
 package ch.catnip.catbreeder.view;
 
-public interface CatView extends LeView {
+public interface CatView extends AppView {
 }

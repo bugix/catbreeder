@@ -15,11 +15,13 @@ import ch.catnip.catbreeder.view.CatListView;
 
 @SuppressWarnings("serial")
 @Component("catListPresenter")
-@Scope("prototype")
+@Scope("singleton")
 public class CatListPresenter implements Presenter, CatListView.CatListViewListener {
 	
 	private static final transient Logger logger = LoggerFactory.getLogger(LoginPresenter.class);
 
+	@Autowired
+	@Lazy
 	private CatListView view;
 	
 	@Autowired
@@ -30,10 +32,5 @@ public class CatListPresenter implements Presenter, CatListView.CatListViewListe
 		List<Cat> cats = breederService.myCats();
 		
 		view.renderCatList(cats);
-	}
-
-	@Override
-	public void setView(CatListView view) {
-		this.view = view;
 	}
 }

@@ -1,8 +1,7 @@
 package ch.catnip.catbreeder.view;
 
-import com.vaadin.navigator.View;
 
-public interface LeView extends View {
+public interface AppView {
 
 	public default void construct() {
 		initComponent();

@@ -16,6 +16,7 @@ import ch.catnip.catbreeder.presenter.LoginPresenter;
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.data.util.BeanItem;
 import com.vaadin.data.validator.StringLengthValidator;
+import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -28,7 +29,7 @@ import com.vaadin.ui.VerticalLayout;
 @Component
 @Scope("prototype")
 @VaadinView(LoginViewImpl.PLACE)
-public class LoginViewImpl extends VerticalLayout implements LoginView {
+public class LoginViewImpl extends VerticalLayout implements LoginView, View {
 
 	public static final String PLACE = "login";
 

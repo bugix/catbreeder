@@ -16,6 +16,7 @@ import ch.catnip.catbreeder.presenter.CatPresenter;
 
 import com.vaadin.data.util.BeanContainer;
 import com.vaadin.data.validator.StringLengthValidator;
+import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.ListSelect;
 import com.vaadin.ui.TextField;
@@ -25,7 +26,7 @@ import com.vaadin.ui.VerticalLayout;
 @Component
 @Scope("prototype")
 @VaadinView(CatViewImpl.PLACE)
-public class CatViewImpl extends VerticalLayout implements CatView {
+public class CatViewImpl extends VerticalLayout implements CatView, View {
 	
 	public static final String PLACE = "cat";
 
