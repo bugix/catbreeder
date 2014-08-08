@@ -1,15 +1,25 @@
 package ch.catnip.catbreeder.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Arrays;
 
-public class Cat {
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+@SuppressWarnings("serial")
+public class Cat implements Serializable {
 	
+	@NotNull
+	@Size(min=2, max=10)
 	private String name;
 	
 	private Breeder breeder;
 	
 	private Breed breed;
-	
+
+	@Past
 	private LocalDate birthDay;
 	
 	private byte[] picture;
@@ -63,6 +73,13 @@ public class Cat {
 
 	public void setPicture(byte[] picture) {
 		this.picture = picture;
+	}
+
+	@Override
+	public String toString() {
+		return "Cat [name=" + name + ", breeder=" + breeder + ", breed="
+				+ breed + ", birthDay=" + birthDay + ", picture="
+				+ Arrays.toString(picture) + "]";
 	}
 
 }

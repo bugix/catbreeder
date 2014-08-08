@@ -1,6 +1,9 @@
 package ch.catnip.catbreeder.model;
 
-public class Breeder {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Breeder implements Serializable {
 	
 	private String firstName;
 	
