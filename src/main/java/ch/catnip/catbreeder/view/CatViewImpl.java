@@ -165,9 +165,8 @@ public class CatViewImpl extends VerticalLayout implements CatView, View, ClickL
 
 			logger.debug("Commited cat " + catBean);
 
-			catViewListener.saveCat(catBean);
-
-			Notification.show("Thanks!");
+			catViewListener.enter(catBean);
+			
 		} catch (CommitException e) {
 			
 			logger.debug("Could not commit form: " + e.getStackTrace());
@@ -175,5 +174,10 @@ public class CatViewImpl extends VerticalLayout implements CatView, View, ClickL
 			Notification.show("You fail!");
 		}
 
+	}
+
+	@Override
+	public void renderSaveResponse() {
+		Notification.show("Thanks for breeding a cat!");
 	}
 }

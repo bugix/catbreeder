@@ -4,9 +4,12 @@ import ch.catnip.catbreeder.model.Cat;
 
 public interface CatView extends AppView {
 	
+	void renderSaveResponse();
+	
 	interface CatViewListener {
-		void enter(String parameters);
-		
-		void saveCat(Cat cat);
+
+		void enter(Cat cat);
+
+		//void saveCat(Cat cat);
 	}
 }

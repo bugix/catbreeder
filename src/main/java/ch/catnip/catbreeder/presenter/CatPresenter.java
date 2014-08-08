@@ -26,15 +26,9 @@ public class CatPresenter implements Presenter, CatView.CatViewListener {
 	private BreederService breederService;
 
 	@Override
-	public void enter(String parameters) {
-		
-	}
-
-	@Override
-	public void saveCat(Cat cat) {
-
+	public void enter(Cat cat) {
 		breederService.addCat(cat);
-		
-		logger.debug("Saving cat");
+		view.renderSaveResponse();
 	}
+
 }
