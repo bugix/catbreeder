@@ -1,9 +1,12 @@
 package ch.catnip.catbreeder;
 
+import java.util.Locale;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import ru.xpoft.vaadin.DiscoveryNavigator;
+import ch.catnip.catbreeder.converter.BreederConverterFactory;
 
 import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
@@ -11,6 +14,7 @@ import com.vaadin.annotations.Title;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Panel;
@@ -29,6 +33,11 @@ public class MainUI extends UI {
 
 	@Override
 	protected void init(VaadinRequest request) {
+		
+		// TODO Is this the right place
+		VaadinSession.getCurrent().setLocale(Locale.GERMAN);
+		VaadinSession.getCurrent().setConverterFactory(new BreederConverterFactory());
+
 		setLayout();
 	}
 
