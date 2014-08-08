@@ -12,6 +12,7 @@ import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.Navigator.ComponentContainerViewDisplay;
 import com.vaadin.navigator.View;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinSession;
@@ -43,6 +44,17 @@ public class MainUI extends UI {
 
 	// TODO Move this to its own Class
 	private void setLayout() {
+		final VerticalLayout layout = new VerticalLayout();
+		layout.setMargin(true);
+		layout.setSpacing(true);
+		setContent(layout);
+		ComponentContainerViewDisplay viewDisplay = new ComponentContainerViewDisplay(layout);
+		
+		navigator = new DiscoveryNavigator(UI.getCurrent(), viewDisplay);
+		
+		
+		
+		/*
 		setSizeFull();
 
 		// Layout with menu on left and view area on right
@@ -85,6 +97,7 @@ public class MainUI extends UI {
 		addCatButton.addClickListener(e -> {
 			navigator.navigateTo("cat");
 		});
+		*/
 	}
 
 	// TODO Add EventBus

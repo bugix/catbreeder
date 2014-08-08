@@ -10,6 +10,5 @@ public interface CatView extends AppView {
 
 		void enter(Cat cat);
 
-		//void saveCat(Cat cat);
 	}
 }

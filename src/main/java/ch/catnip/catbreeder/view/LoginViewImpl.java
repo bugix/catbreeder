@@ -5,13 +5,13 @@ import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import ru.xpoft.vaadin.VaadinView;
 import ch.catnip.catbreeder.MainUI;
 import ch.catnip.catbreeder.model.Breeder;
-import ch.catnip.catbreeder.presenter.LoginPresenter;
 
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.data.util.BeanItem;
@@ -21,6 +21,7 @@ import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -31,12 +32,13 @@ import com.vaadin.ui.VerticalLayout;
 @VaadinView(LoginViewImpl.PLACE)
 public class LoginViewImpl extends VerticalLayout implements LoginView, View {
 
-	public static final String PLACE = "login";
+	public static final String PLACE = "";
 
 	private static final transient Logger logger = LoggerFactory.getLogger(LoginViewImpl.class);
-
+	
 	@Autowired
-	private LoginPresenter loginPresenter;
+	@Qualifier("loginPresenter")
+	private LoginViewListener loginViewListener;
 	
 	private TextField loginField;
 	
@@ -107,7 +109,7 @@ public class LoginViewImpl extends VerticalLayout implements LoginView, View {
 			try
             {
                 fieldGroup.commit();
-                //Notification.show("OK");
+                loginViewListener.enter(breeder.getLogin(), breeder.getPassword());
             }
             catch (Exception exception)
             {
@@ -115,6 +117,11 @@ public class LoginViewImpl extends VerticalLayout implements LoginView, View {
             }
 		});
 	}
+	
+	@Override
+	public void renderLoginFailed() {
+		Notification.show("Your login attemp failed. Do not touch my cats!", Notification.Type.WARNING_MESSAGE);
+	}	
 	
 	@Override
 	public void setLayout() {

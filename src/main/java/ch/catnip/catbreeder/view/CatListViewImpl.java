@@ -26,7 +26,7 @@ import com.vaadin.ui.VerticalLayout;
 @VaadinView(CatListViewImpl.PLACE)
 public class CatListViewImpl extends VerticalLayout implements CatListView, View {
 	
-	public static final String PLACE = "";
+	public static final String PLACE = "catList";
 
 	private static final transient Logger logger = LoggerFactory.getLogger(CatListViewImpl.class);
 	

@@ -63,13 +63,7 @@ public class MocBreederService implements BreederService {
 
 	@Override
 	public boolean loginBreeder(String login, String password) {
-
-		if (!"john".equals(currentBreeder.getLogin())
-				|| !"123456".equals(currentBreeder.getPassword())) {
-			return false;
-		}
-
-		return true;
+		return login.equals(currentBreeder.getLogin()) && password.equals(currentBreeder.getPassword());
 	}
 
 }
