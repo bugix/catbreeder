@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import ru.xpoft.vaadin.DiscoveryNavigator;
 import ch.catnip.catbreeder.converter.BreederConverterFactory;
+import ch.catnip.catbreeder.view.NavigationViewImpl;
 
 import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
@@ -15,11 +16,9 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinSession;
-import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
 
 @SuppressWarnings("serial")
 @Component
@@ -29,7 +28,7 @@ import com.vaadin.ui.VerticalLayout;
 @Title("CatBreeder")
 public class MainUI extends UI {
 
-	Navigator navigator;
+	private Navigator navigator;
 
 	@Override
 	protected void init(VaadinRequest request) {
@@ -48,43 +47,18 @@ public class MainUI extends UI {
 		// Layout with menu on left and view area on right
 		HorizontalLayout horizontalLayout = new HorizontalLayout();
 		horizontalLayout.setSizeFull();
-
-		// Have a menu on the left side of the screen
-		Panel menu = new Panel("Menu");
-		menu.setHeight("100%");
-		menu.setWidth(null);
-
-		VerticalLayout menuContent = new VerticalLayout();
-
-		Button listCatsButton = new Button("List cats");
-		Button addCatButton = new Button("Add cat");
-
-		menuContent.addComponent(listCatsButton);
-		menuContent.addComponent(addCatButton);
-
-		menuContent.setWidth(null);
-		menuContent.setMargin(true);
-		menuContent.setSpacing(true);
-		menu.setContent(menuContent);
-		horizontalLayout.addComponent(menu);
-
+		setContent(horizontalLayout);
+		
 		// A panel that contains a content area on right
 		Panel content = new Panel("Content");
 		content.setSizeFull();
+		navigator = new DiscoveryNavigator(this, content);
+		setNavigator(navigator);
+		
+		Panel navigationView = new NavigationViewImpl();
+		horizontalLayout.addComponent(navigationView);
 		horizontalLayout.addComponent(content);
 		horizontalLayout.setExpandRatio(content, 1.0f);
-
-		setContent(horizontalLayout);
-
-		navigator = new DiscoveryNavigator(this, content);
-
-		listCatsButton.addClickListener(e -> {
-			navigator.navigateTo("");
-		});
-
-		addCatButton.addClickListener(e -> {
-			navigator.navigateTo("cat");
-		});
 	}
 
 	// TODO Add EventBus

@@ -23,10 +23,8 @@ import com.vaadin.ui.VerticalLayout;
 @SuppressWarnings("serial")
 @Component
 @Scope(value = "request")
-@VaadinView(CatListViewImpl.PLACE)
+@VaadinView(CatListView.PLACE)
 public class CatListViewImpl extends VerticalLayout implements CatListView, View {
-	
-	public static final String PLACE = "";
 
 	private static final transient Logger logger = LoggerFactory.getLogger(CatListViewImpl.class);
 	
